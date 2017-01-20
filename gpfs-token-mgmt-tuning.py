@@ -57,10 +57,10 @@ except getopt.GetoptError, err:
 
 # Grab parameters
 num_nodes=int(run("%s --network | grep '<c0' | wc -l" % (mmdiag)))
-mftc=int(run("%s --config | grep maxFilesToCache | awk {'print $3'}" % (mmdiag)))
-msc=int(run("%s --config | grep maxStatCache | awk {'print $3'}" % (mmdiag)))
+mftc=int(run("%s --config | grep maxFilesToCache | awk {'print $NF'}" % (mmdiag)))
+msc=int(run("%s --config | grep maxStatCache | awk {'print $NF'}" % (mmdiag)))
 manager_nodes=int(run("%s| grep manager | wc -l" % (mmlscluster)))
-tml=int(run("%s --config | grep tokenMemLimit | awk {'print $2'}" % (mmdiag)))
+tml=int(run("%s --config | grep tokenMemLimit | awk {'print $NF'}" % (mmdiag)))
 local_nodes=int(run("%s| grep '^   [0-9]' | wc -l" % (mmlscluster)))
 
 # Set any overrides
